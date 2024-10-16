@@ -54,8 +54,14 @@ func (r Storage) Get(key string) *string {
 		r.Logger.Info("Значение для ключа не найдено", zap.String("key", key))
 		return nil
 	}
+	var result string
+	if res.Kind == "D" {
+		result = strconv.Itoa(res.d)
+	} else {
+		result = res.s
+	}
 	r.Logger.Info("Значение получено", zap.String("key", key), zap.String("value", res.s))
-	return &res.s
+	return &result
 }
 
 func (r Storage) GetKind(key string) string {
