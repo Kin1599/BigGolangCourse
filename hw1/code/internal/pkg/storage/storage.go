@@ -9,8 +9,6 @@ import (
 type Value struct {
 	s    string
 	d    int
-	a    any
-	b    bool
 	Kind string
 }
 
